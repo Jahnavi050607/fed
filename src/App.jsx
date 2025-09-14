@@ -1,67 +1,54 @@
-// Import necessary tools from React
+// Importing React library and Component class
 import React, { Component } from 'react';
-
-// Import the styling from App.css
+// Importing external CSS file to style the component
 import './App.css';
 
-// Create a React component named App
 class App extends Component {
-  constructor() {
-    super(); // Call the parent constructor
-
-    // Define the initial state of the app
-    this.state = {
-      index: 0,         // current slide index (starts at slide 0)
-      slideCount: 3     // total number of slides (3 in total)
-    };
-
-    // Bind the method so it can access `this`
-    this.autoSlide = this.autoSlide.bind(this);
-  }
-
-  // React lifecycle method: runs automatically after the component is loaded
-  componentDidMount() {
-    // Automatically call autoSlide every 3 seconds (3000 milliseconds)
-    this.interval = setInterval(this.autoSlide, 3000);
-  }
-
-  // Function to slide to the next image
-  autoSlide() {
-    // Calculate the next slide index (loops back to 0 after the last slide)
-    let nextIndex = (this.state.index + 1) % this.state.slideCount;
-
-    // Update the state with the new index
-    this.setState({ index: nextIndex });
-
-    // Move the slide container to show the correct slide
-    // For example, if nextIndex = 1 → translateX(-100%), index 2 → -200%, etc.
-    document.getElementById("slideRef").style.transform = `translateX(-${nextIndex * 100}%)`;
-  }
-
-  // Render method to show content on the screen
+  // The render method returns the JSX (UI structure) to be displayed
   render() {
-    const { index } = this.state; // Get the current index from state
-
     return (
       <>
-        {/* Top header section */}
+        {/* Header section containing a logo */}
         <header>
-          <div className='logo'>Sliding Page - Slide {index}</div>
+          <div className='logo'>My Projects</div>
+          {/* .logo class styles the text to look like a bold site/project title */}
         </header>
 
-        {/* Middle section containing the image slider */}
+        {/* Main content section displaying project cards in a grid layout */}
         <section>
-          <div className='slider'>
-            <div className='slides' id="slideRef">
-              {/* Each div is one full-screen slide with a background image */}
-              <div className='slide s1'></div>
-              <div className='slide s2'></div>
-              <div className='slide s3'></div>
-            </div>
+          {/* Each card displays an image and a label/title below it */}
+          <div className='card'>
+            <img src='/ph1.jpg' alt='' />
+            <label>Project One</label>
+          </div>
+
+          <div className='card'>
+            <img src='/ph2.jpg' alt='' />
+            <label>Project Two</label>
+          </div>
+
+          <div className='card'>
+            <img src='/ph3.jpg' alt='' />
+            <label>Project Three</label>
+          </div>
+
+          <div className='card'>
+            <img src='/ph4.jpg' alt='' />
+            <label>Project Four</label>
+          </div>
+
+          <div className='card'>
+            <img src='/ph5.jpg' alt='' />
+            <label>Project Five</label>
+          </div>
+
+          <div className='card'>
+            <img src='/ph6.jpg' alt='' />
+            <label>Project Six</label>
           </div>
         </section>
 
-        {/* Footer at the bottom */}
+        {/* Footer section with copyright notice */}
         <footer>
           Copyright @ 2025. All rights reserved.
         </footer>
@@ -70,5 +57,5 @@ class App extends Component {
   }
 }
 
-// Export the App component so it can be used in main.jsx
+// Exporting the App component so it can be used in other parts of the application
 export default App;
